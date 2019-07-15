@@ -3,7 +3,8 @@ const response = require('../helper/response');
 
 async function getAccounts(req, res) {
     try {
-        const accounts = await db.getAccounts()
+        const {query} = req
+        const accounts = await db.getAccounts(query)
         if(!accounts.length) {
             return response.errorHelper(res, 200, "No Accounts")
         }
